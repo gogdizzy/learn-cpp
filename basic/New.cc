@@ -1,37 +1,13 @@
 //
-// Created by 关鑫 on 2019/10/9.
+// Created by 关鑫 on 2020/9/9.
 //
 
-
-#include <cstdio>
 #include <iostream>
+
+namespace TestNewOverride {
 
 using std::cout;
 using std::endl;
-
-namespace TestCast {
-
-class T {
-public:
-    operator int () {
-        return 10;
-    }
-};
-
-void test0( int x ) {
-    printf( "implicit x = %d\n", x );
-}
-
-void run() {
-    int x = int( T() );
-    printf( "explicit x = %d\n", x );
-    printf( "T() = %d\n", T() );
-    test0( T() );
-}
-
-}
-
-namespace TestNewOverride {
 
 class Test {
 public:
@@ -64,17 +40,8 @@ void run() {
 
 }
 
-namespace TestRvalueRef {
-
-void run() {
-
-}
-
-}
-
 int main() {
-    TestCast::run();
     TestNewOverride::run();
-    TestRvalueRef::run();
+
     return 0;
 }

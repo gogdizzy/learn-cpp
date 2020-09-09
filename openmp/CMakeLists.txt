@@ -1,0 +1,1 @@
+add_executable(Openmp __Main__.cpp)

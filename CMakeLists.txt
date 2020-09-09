@@ -2,11 +2,19 @@ cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
 
 project(LEARN_CPP)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+set(CMAKE_CXX_COMPILER "/usr/local/gcc-10.2.0/bin/g++-10.2")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++2a -O0")
+link_directories("/usr/local/gcc-10.2.0/lib")
 
-add_executable(memory_layout_test memory_layout.cpp)
-add_executable(stl_test stl.cpp)
-add_executable(syntax_test syntax.cpp)
-add_executable(exception_test exception.cpp)
-add_executable(io_test io.cpp)
+find_package(OpenMP)
+if(OPENMP_FOUND)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+endif()
+
+add_subdirectory(backtrace)
+add_subdirectory(basic)
+add_subdirectory(locale)
+add_subdirectory(meta)
+add_subdirectory(openmp)
 
