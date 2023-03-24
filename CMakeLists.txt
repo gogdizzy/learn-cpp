@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
 project(LEARN_CPP)
 
 set(CMAKE_CXX_COMPILER "/usr/local/gcc-10.2.0/bin/g++-10.2")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++2a -O2")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -O2")
 link_directories("/usr/local/gcc-10.2.0/lib")
 
 find_package(OpenMP)
@@ -21,9 +21,12 @@ if(Boost_FOUND)
     MESSAGE( STATUS "Boost_LIB_VERSION = ${Boost_LIB_VERSION}.")
 endif()
 
+include_directories(.)
+
 add_subdirectory(backtrace)
 add_subdirectory(basic)
 add_subdirectory(locale)
 add_subdirectory(meta)
 add_subdirectory(openmp)
-
+add_subdirectory(heap)
+add_subdirectory(regex)

@@ -20,9 +20,9 @@ consteval auto MemberCounter() {
 template<typename T>
 consteval auto MemberCounter(auto ...Members) {
     if constexpr (requires { T{ Members... }; } == false)
-    return sizeof...(Members) - 1;
+        return sizeof...(Members) - 1;
     else
-    return MemberCounter<T>(Members..., UniversalType{});
+        return MemberCounter<T>(Members..., UniversalType{});
 }
 
 auto main()->int {
